@@ -15,7 +15,7 @@ function playRound(playerSelection, computerSelection) {
     } else {
       return "You lose. Paper beats rock.";
     }
-  } else if (playerSelection === 'paper') {
+  } else if (playerSelection === 'palsper') {
     if (computerSelection === 'rock') {
       return "You win! Paper beats rock.";
     } else {
@@ -43,3 +43,4 @@ function game() {
 
 // // Start the game
 game();
+
