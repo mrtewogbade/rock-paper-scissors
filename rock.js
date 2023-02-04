@@ -1,46 +1,88 @@
-// Create a function to generate the computer's choice
-function computerSelection() {
-  const choices = ['rock', 'paper', 'scissors'];
-  return choices[Math.floor(Math.random() * choices.length)];
-}
+const choices = ["rock", "paper", "scissors"]
+const winners = []
 
-// Create a function to play a single round of the game
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  if (playerSelection === computerSelection) {
-    return "It's a tie!";
-  } else if (playerSelection === 'rock') {
-    if (computerSelection === 'scissors') {
-      return "You win! Rock beats scissors.";
-    } else {
-      return "You lose. Paper beats rock.";
-    }
-  } else if (playerSelection === 'palsper') {
-    if (computerSelection === 'rock') {
-      return "You win! Paper beats rock.";
-    } else {
-      return "You lose. Scissors beats paper.";
-    }
-  } else if (playerSelection === 'scissors') {
-    if (computerSelection === 'paper') {
-      return "You win! Scissors beats paper.";
-    } else {
-      return "You lose. Rock beats scissors.";
-    }
-  } else {
-    return "Invalid selection. Please choose rock, paper, or scissors.";
-  }
-}
-
-// // Create a function to play multiple rounds of the game
 function game() {
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Rock, paper, or scissors?");
-    let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-  }
+
+    for (let i = 0; i <= 5; i++) {
+    playRound(i)
+}
+    logwins();
+    //play the game
+    //play five rounds
+    //console based
 }
 
-// // Start the game
-game();
+function playRound(round) {
+    const playerSelection = playerChoice();
+    const computerSelection = computerChoice();
+    const winner = checkWinner(playerSelection, computerSelection);
+    winners.push(winner);
+    logRound(playerSelection, computerSelection, winner,round);
+}
+
+function playerChoice() {
+    //get input from player
+    let input = prompt("Please type 'Rock', 'Paper' or 'Scissors'");
+    
+        while (input == null) {
+         input = prompt("Please type 'Rock', 'Paper' or 'Scissors'");
+    
+    }
+
+    input = input.toLowerCase();
+    let check = validateInput(input)
+    while (check == false){
+       input = prompt("Type Rock, Paper or Scissors; Spelling needs to be exact.")
+    };
+    while (input == null) {
+        input = prompt("Please type 'Rock', 'Paper' or 'Scissors'");
+   
+   }
+
+    input = input.toLowerCase(input);
+    check = validateInput(input);
+    return input;
+}
+
+function computerChoice() {
+    return choices[Math.floor(Math.random()*choices.length)]
+}
+
+
+function validateInput(choice) {
+    return choices.includes(choice)
+}
+function checkWinner(choiceP, choiceC) {
+    if (choiceP === choiceC){
+        return "Tie!";
+    }else if (
+        (choiceP === "rock" && choiceC === "scissors") || 
+        (choiceP === "paper" && choiceC === "rock") || 
+        (choiceP === "scissors" && choiceC === "paper")
+        ){
+        return "Player";
+    } else {
+        return "Computer"
+    }  
+}
+
+function logwins() {
+    let playerwins = winners.filter((item) => item == "Player").length;
+    let computerwins = winners.filter((item) => item == "Computer").length;
+    let ties = winners.filter((item) => item == "Tie").length;
+    console.log('Results: ');
+    console.log("PLayer wins:", playerwins);
+    console.log("Computer wins:", computerwins);
+    console.log("Ties:", ties);
+
+}
+
+function logRound(playerChoice, computerChoice, winner, round) {
+    console.log("Round:", round);
+    console.log("Player:", playerChoice);
+    console.log("Computer Choice:", computerChoice);
+    console.log(winner, "won the round");
+
+    console.log(".....................");
+}
 
