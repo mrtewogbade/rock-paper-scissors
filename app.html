@@ -5,10 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Rock Paper Scissors UI</title>
 </head>
 <body>
-    <button onclick="game()">Start Game</button>
+    <div class="score">
+        <h1 class="ties"> Ties: 0 </h1>
+    </div>
+
+    <div class="winnerDiv">
+        <h1 class="winner"></h1>
+        <button class="reset" onclick="resetGame()"> Play Again? </button>
+    </div>
+
+    <div class="playerSection">
+        <h3 class="playerChoice"></h3>
+        <h3 class="playerScore"> Score: 0</h3>
+        <div class="playerImgs">
+            <img src="./Images/rock_1faa8 (1).png" alt="ROCK" class="pImg" id="rock">
+
+            <img src="./Images/scroll_1f4dc.png" alt="PAPER" class="pImg" id="paper">
+
+            <img src="./Images/scissors_2702-fe0f.png" alt="SCISSORS" class="pImg" id="scissors">
+            
+        </div>
+    </div>
+
+    <div class="computerSection">
+        <h3 class="computerChoice"></h3>
+        <h3 class="computerScore"> Score: 0</h3>
+        <div class="computerImgs">
+            <img src="./Images/rock_1faa8 (1).png" alt="ROCK" class="pImg">
+
+            <img src="./Images/scroll_1f4dc.png" alt="PAPER" class="pImg">
+
+            <img src="./Images/scissors_2702-fe0f.png" alt="SCISSORS" class="pImg">
+            
+        </div>
+    </div>
+
+
+
 
 
     <script src="./app.js"></script>
