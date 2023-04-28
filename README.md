@@ -1,1 +1,1 @@
-# rock-paper-scissors
+mrtewogbade.github.io/rock-paper-scissors/
